@@ -1,0 +1,49 @@
+<ScrollView>
+  <StackLayout id="parentStackLayout">
+      <Label text="Select item:" style="margin-bottom: 5;"></Label>
+      <StackLayout class="dropDownStackCover" horizontalAlignment="stretch" verticalAlignment="stretch">
+          <DropDown #dd backroundColor="#F00" [items]="items" [(ngModel)]="selectedIndex" (selectedIndexChanged)="onchange($event)"
+              (opened)="onopen()" (closed)="onclose()" hint="Select Item"></DropDown>
+      </StackLayout>
+
+      <Label text="Select item:" style="margin-bottom: 5;"></Label>
+      <StackLayout class="dropDownStackCover" horizontalAlignment="stretch" verticalAlignment="stretch">
+          <DropDown #dd backroundColor="#F00" [items]="items" [(ngModel)]="selectedIndex" (selectedIndexChanged)="onchange($event)"
+              (opened)="onopen()" (closed)="onclose()" hint="Select Item"></DropDown>
+      </StackLayout>
+
+      <Label text="Select item:" style="margin-bottom: 5;"></Label>
+      <StackLayout class="dropDownStackCover" horizontalAlignment="stretch" verticalAlignment="stretch">
+          <DropDown #dd backroundColor="#F00" [items]="items" [(ngModel)]="selectedIndex" (selectedIndexChanged)="onchange($event)"
+              (opened)="onopen()" (closed)="onclose()" hint="Select Item"></DropDown>
+      </StackLayout>
+
+      <DockLayout orientation="horizontal" style="margin-bottom: 15;">
+          <Button text="Reset" backgroundColor="#d9534f" horizontalAlignment="left" style="margin-left: 20; color: #FFFFFF;" width="90"></Button>
+          <Button text="Buscar" backgroundColor="#5cb85c" horizontalAlignment="right" style="margin-right: 20; color: #FFFFFF;" width="90"></Button>
+      </DockLayout>
+
+      <GridLayout columns="60, *" rows="auto" backgroundColor="lightgray" *ngIf="showTable">
+          <Label text="Id Item" row="0" col="0" class="tableLabelId" style="border-top-width: 1;"></Label>
+          <Label text="Nombre Item" row="0" col="1" class="tableLabelName" style="border-top-width: 1;"></Label>
+      </GridLayout>
+
+      <GridLayout columns="60, *" rows="auto, auto, auto, auto, auto, auto, auto, auto, auto, auto" backgroundColor="lightgray"
+          *ngFor="let product of productList | paginate: { itemsPerPage: 10, currentPage: p }; index as i">
+          <Label text="1" row="{{i}}" col="0" class="tableLabelId"></Label>
+          <Label text="{{product.name}}" row="{{i}}" col="1" class="tableLabelName"></Label>
+      </GridLayout>
+
+      <DockLayout orientation="horizontal">
+          <Button text="<<" backgroundColor="gray" horizontalAlignment="left" style="margin-left: 20; color: #FFFFFF;" width="40" (tap)="backTablePressed()"></Button>
+
+          <Label text="[1]" style="margin-left: 20; font-size: 18" verticalAlignment="center"></Label>
+          <Label text="..." style="margin-left: 7; font-size: 18" verticalAlignment="center"></Label>
+          <Label text="[{{p}}]" style="margin-left: 30; font-size: 18; color:rgb(77, 41, 207); " verticalAlignment="center" ></Label>
+          <Label text="..." style="margin-left: 20; font-size: 18" verticalAlignment="center" ></Label>
+          <Label text="[{{maxTableValue}}]" verticalAlignment="center"style="margin-left: 10; font-size: 18" ></Label>
+          <Button text=">>" backgroundColor="gray" horizontalAlignment="right" style="margin-right: 20; color: #FFFFFF;" width="40"
+              (tap)="nextTablePressed()"></Button>
+      </DockLayout>
+  </StackLayout>
+</ScrollView>
