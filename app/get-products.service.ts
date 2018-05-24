@@ -7,6 +7,8 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class GetProductsService {
 
+  apiUrl = 'https://pacific-eyrie-39073.herokuapp.com';
+
   constructor(private httpClient: HttpClient) { }
 
   // This method is making a http request to the api to get the products from the selected parameters.
@@ -18,12 +20,12 @@ export class GetProductsService {
         'DE_FAMI': productParameters.DE_FAMI
       }
     });
-    return this.httpClient.get<Product[]>('http://192.168.1.112:3000/products', {params});
+    return this.httpClient.get<Product[]>(this.apiUrl + '/products', {params});
   }
 
   // This method is making a http request to the api to get the available category options.
   getDistinctCategory(): Observable<string[]> {
-    return this.httpClient.get<string[]>('http://192.168.1.112:3000/distinctcategory');
+    return this.httpClient.get<string[]>(this.apiUrl + '/distinctcategory');
   }
 
   // This method is making a http request to the api to to get the available brands with the category
@@ -34,7 +36,7 @@ export class GetProductsService {
         'selectedCategory': selectedCategory
       }
     });
-    return this.httpClient.get<string[]>('http://192.168.1.112:3000/distinctbrand', {params});
+    return this.httpClient.get<string[]>(this.apiUrl + '/distinctbrand', {params});
   }
 
   // This method is making a http request to the api to to get the available families with the category
@@ -46,7 +48,7 @@ export class GetProductsService {
         'selectedBrand': selectedBrand
       }
     });
-    return this.httpClient.get<string[]>('http://192.168.1.112:3000/distinctfamily', {params});
+    return this.httpClient.get<string[]>(this.apiUrl + '/distinctfamily', {params});
   }
 
 

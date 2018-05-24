@@ -34,8 +34,8 @@
 
         <GridLayout columns="60, *" rows="auto, auto, auto, auto, auto, auto, auto, auto, auto, auto" backgroundColor="lightgray"
             *ngFor="let product of products | paginate: { itemsPerPage: 10, currentPage: p }; index as i">
-            <Label text="{{product.ID_ITEM}}" row="{{i}}" col="0" class="tableLabelId"></Label>
-            <Label text="{{product.DE_ITEM}}" row="{{i}}" col="1" class="tableLabelName"></Label>
+            <Label text="{{product.ID_ITEM}}" row="{{i}}" col="0" class="tableLabelId" style="font-size: 14"></Label>
+            <Label text="{{product.DE_ITEM}}" row="{{i}}" col="1" class="tableLabelName" style="font-size: 11"></Label>
         </GridLayout>
 
         <DockLayout orientation="horizontal" *ngIf="showProducts">
